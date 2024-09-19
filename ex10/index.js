@@ -1,11 +1,12 @@
 const prompt = require("prompt-sync")({ sigint: true});
 
 console.log("Insert a integer number:");
-const num = Number(prompt(">"));
+const num = parseInt(prompt(">"));
 
-function repeat() {
-    for (let i = 0; i < 10; i++)
+function repeatNumbers() {
+    for (let i = 0; i < 10; i++) {
         console.log(num);
+    }
 }
 
-console.log(repeat());
+repeatNumbers();
