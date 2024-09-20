@@ -1,21 +1,20 @@
 const prompt = require("prompt-sync")({ sigint: true});
 
-console.log("Insert the first value:");
-const valueOne = Number(prompt(">"));
+const numbersToAscending = []
+let input;
 
-console.log("Insert the second value:");
-const valueTwo = Number(prompt(">"));
+while( input !== 0) {
+    console.log("Insert an integer number (use 0 to stop de loop):");
+    input = Number(prompt(">"));
 
-function verify() {
-    if ( valueOne === valueTwo) {
-        return ("The values can't be the same.");
-    }
-
-    if(valueOne < valueTwo) {
-        console.log(`The values in ascending order: ${valueOne}, ${valueTwo}`);
-    } else {
-        console.log(`The values in ascending order: ${valueTwo}, ${valueOne}`);
+    if (input !== 0) {
+        numbersToAscending.push(input);
     }
 }
 
-console.log(verify());
+function sortNumbers() {
+   const numbersInOrder = numbersToAscending.sort((a, b) => a - b);
+   console.log(numbersInOrder);
+}
+
+sortNumbers();
