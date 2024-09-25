@@ -25,21 +25,16 @@ while( input !== 0 && inputWeight !== 0) {
 } 
 
 function weightedArithmeticMean () {
-
     let sumOfTheTop = 0
     let sumOfTheBottom = 0;
     
-
     for(let i = 0; i < decimalNumbers.length; i++) {
         const topMultiply = decimalNumbers[i] * weightOfNumbers[i];
         sumOfTheTop = sumOfTheTop + topMultiply;
         sumOfTheBottom = sumOfTheBottom + weightOfNumbers[i]; 
-
     }
     
-    let finalResult = sumOfTheTop / sumOfTheBottom
-    return finalResult;
-
+    return sumOfTheTop / sumOfTheBottom;
 }
 
 console.log("This is your weighted arithmetic mean " + weightedArithmeticMean());
