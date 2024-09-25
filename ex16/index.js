@@ -1,12 +1,14 @@
-function isPrime(num) {
-    const ifLessThanOneItsNotPrime = 1;
-    const divisor = 2;
 
-    if (num <= ifLessThanOneItsNotPrime) {
+const INITIAL_DIVISOR = 2;
+
+function isPrime(num) {
+    const isPossiblePrime = num > 1;
+
+    if (!isPossiblePrime) {
         return false;
     }
 
-    for (let currentDivisor = divisor; currentDivisor <= Math.sqrt(num); currentDivisor++) {
+    for (let currentDivisor = INITIAL_DIVISOR; currentDivisor <= Math.sqrt(num); currentDivisor++) {
         if (num % currentDivisor === 0) {
             return false;
         }
@@ -16,13 +18,13 @@ function isPrime(num) {
 
 function findPrimesAbove100(count) {
     const primes = [];
-    let startNumber = 101;
+    let currentNumber = 101;
 
     while (primes.length < count) {
-        if (isPrime(startNumber)) {
-            primes.push(startNumber);
+        if (isPrime(currentNumber)) {
+            primes.push(currentNumber);
         }
-        startNumber++;
+        currentNumber++;
     }
 
     return primes; 
