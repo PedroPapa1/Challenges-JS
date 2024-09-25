@@ -1,12 +1,13 @@
 const prompt = require("prompt-sync")({ sigint: true});
 
 console.log("Insert an integer number.");
-const value = parseInt(prompt(">"));
+let value = parseInt(prompt(">"));
+
+const DIVISOR = 2;
 
 while (value > 0) {
-    const divisor = 2;
-
-    if (value % divisor === 0 ) {
+    
+    if (value % DIVISOR === 0 ) {
         console.log(`${value} is an even number.`);
     }else {
         console.log(`${value} is an odd number.`);
