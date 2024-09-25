@@ -17,7 +17,7 @@ const sideC = Number(prompt(">"));
     return isSideAValid && isSideBValid && isSideCValid  
 }
 
-function typeOfTriangle(){
+function verifyTypeOfTriangle(){
     if (sideA === sideB && sideB === sideC) {
         console.log("It's an Equilateral triangle.");
     } else if (sideA === sideB || sideA === sideC || sideB === sideC) {
@@ -28,7 +28,7 @@ function typeOfTriangle(){
 }
 
 if(checkIfItIsATriangle()){
-    typeOfTriangle();
+    verifyTypeOfTriangle();
 }else {
     console.log("It's not a triangle.");
 }
