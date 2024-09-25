@@ -7,18 +7,21 @@ for (let i = 0; i < 4; i++) {
     integerNumbers.push(parseInt(input));
 }
 
+const POSITION_ZERO = integerNumbers[0];
+const POSITION_ONE = integerNumbers[1];
+const POSITION_TWO = integerNumbers[2];
+let POSITION_THREE = integerNumbers[3];
+
 function calculate() {
+    const resultPositionZero = POSITION_ZERO + 25;
+    const resultPositionOne = POSITION_ONE * 3;
+    const resultPositionTwo = (POSITION_TWO * 12) / 100;
+    POSITION_THREE = POSITION_ZERO + POSITION_ONE + POSITION_TWO;
 
-    integerNumbers[3] = integerNumbers[0] + integerNumbers[1] + integerNumbers[2]
-    integerNumbers[0] = integerNumbers[0] + 25;
-    integerNumbers[1] = integerNumbers[1] * 3;
-    integerNumbers[2] = (integerNumbers[2] * 12) / 100;
-
-    console.log(integerNumbers[0]);
-    console.log(integerNumbers[1]);
-    console.log(integerNumbers[2]);
-    console.log(integerNumbers[3]);
-
+    console.log(resultPositionZero);
+    console.log(resultPositionOne);
+    console.log(resultPositionTwo);
+    console.log(POSITION_THREE);
 }
 
 calculate();
