@@ -12,7 +12,7 @@ function shop() {
         const finalPrice = (apples * DEFAULT_PRICE).toFixed(2);
         return (`Your purchase will cost $${finalPrice} dollars.`);
     } 
-    else {
+    if (apples >= DISCOUNT_QUANTITY) {
         const discountFinalPrice = (apples * DISCOUNT_PRICE).toFixed(2);
         return (`Congrats!! You have a discount, your purchase will cost $${discountFinalPrice} dollars.`);
     }
