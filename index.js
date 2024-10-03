@@ -60,12 +60,12 @@ function getValidInteger(promptMessage){
 function confirmContinue() {
     let choice;
 
-    while (choice != 1) {
+    while (choice != BACK_TO_MENU_CHOICE) {
         console.log("Please insert a valid integer number.");
         console.log("1. Back to menu.");
         console.log("0. Exit.");
         choice = getValidInteger(">");
-        
+
         if (choice === BACK_TO_MENU_CHOICE) {
             displayMenu();
         } else if (choice === EXITING_CHOICE) {
