@@ -47,9 +47,9 @@ function displayMenu(){
     console.log("0. Exit.");
 }
 
-function getValidInteger(){
-    while (true){
-        const value = parseInt(prompt(">"))
+function getValidInteger(promptMessage){
+    while(true){
+        const value = parseInt(prompt(promptMessage))
         if (Number.isInteger(value)) {
             return value;
         }
@@ -58,13 +58,14 @@ function getValidInteger(){
 }
 
 function confirmContinue() {
-    while (true) {
-        whileCount++ 
-        whileMap[whileCount] = whileMap[whileCount] ? whileMap[whileCount] + 1 : 1;  
+    let choice;
+
+    while (choice != 1) {
         console.log("Please insert a valid integer number.");
         console.log("1. Back to menu.");
         console.log("0. Exit.");
-        const choice = getValidInteger();
+        choice = getValidInteger(">");
+        
         if (choice === BACK_TO_MENU_CHOICE) {
             displayMenu();
         } else if (choice === EXITING_CHOICE) {
@@ -134,11 +135,11 @@ function executeExercise(choice) {
 
 function menu(){
     while(true) {
-        let validOption;
         let secondChoice;
+        let validOption;
 
         displayMenu();
-        const userChoice = getValidInteger();
+        const userChoice = getValidInteger(">");
 
         executeExercise(userChoice);
        
@@ -147,11 +148,11 @@ function menu(){
                 console.log("1. Back to menu.");
                 console.log("2. Try again.");
                 console.log("0. Exit.");
-                secondChoice = getValidInteger();
-            }else {
+                secondChoice = getValidInteger(">");
+            }else if (userChoice > LAST_EXERCISE){
                 console.log("1. Back to menu.");
                 console.log("0. Exit.");
-                secondChoice = getValidInteger();
+                secondChoice = getValidInteger(">");
             }
 
             if (secondChoice === EXITING_CHOICE) {

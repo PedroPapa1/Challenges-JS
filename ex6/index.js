@@ -3,13 +3,13 @@ const prompt = promptSync();
 
 export function triangleType() {
     console.log("Insert side A: ");
-    const sideA = Number(prompt(">"));
+    const sideA = parseInt(prompt(">"));
 
     console.log("Insert side B: ");
-    const sideB = Number(prompt(">"));
+    const sideB = parseInt(prompt(">"));
 
     console.log("Insert side C: ");
-    const sideC = Number(prompt(">"));
+    const sideC = parseInt(prompt(">"));
 
     function checkIfItIsATriangle() {
         const isSideAValid = sideA < sideB + sideC;

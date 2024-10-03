@@ -17,7 +17,7 @@ export function evenOrOddCheck() {
 
         console.log("-----------------------------");
         console.log("Insert the next integer number.");
-        value = Number(prompt(">"));
+        value = parseInt(prompt(">"));
     }
 
     console.log("You need to use a integer number! Try again.");
