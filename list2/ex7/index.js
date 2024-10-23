@@ -31,30 +31,32 @@ export function carRentalCostCalculation() {
     console.log('How many km the customer has driven the car? (Insert an INTEGER number)');
     const distance = parseInt(prompt('>'));
 
-    function rentalAccount() {
-        const luxuryPerDay = daysRented * LUXURY_PER_DAY;
+    function calculateEconomyCost(daysRented, distance) {
         const economyPerDay = daysRented * ECONOMY_PER_DAY;
-
-        if (carType === 'economy') {
-            if (distance > ECONOMY_KM_DISCOUNT) {
-                const economyUpTo100KmResult = distance * ECONOMY_MORE_THAN_100KM_PRICE + economyPerDay;
-                console.log(`The price of renting an ${carType} car is $${economyUpTo100KmResult} dollars.`);
-            }  else {
-                const economyAboveTo100KmResult = distance * ECONOMY_LESS_THAN_100KM_PRICE + economyPerDay;
-                console.log(`The price of renting an ${carType} car is $${economyAboveTo100KmResult} dollars.`);
-            }
-        }
-
-        if (carType === 'luxury') {
-            if (distance > LUXURY_KM_DISCOUNT) {
-                const luxuryUpTo200KmResult = distance * LUXURY_MORE_THAN_200KM_PRICE + luxuryPerDay;
-                console.log(`The price of renting an ${carType} car is $${luxuryUpTo200KmResult} dollars.`);
-            }  else {
-                const luxuryAboveTo200KmResult = distance * LUXURY_LESS_THAN_200KM_PRICE + luxuryPerDay;
-                console.log(`The price of renting an ${carType} car is $${luxuryAboveTo200KmResult} dollars.`);
-            }
+        if (distance > ECONOMY_KM_DISCOUNT) {
+            return distance * ECONOMY_MORE_THAN_100KM_PRICE + economyPerDay;
+        } else {
+            return distance * ECONOMY_LESS_THAN_100KM_PRICE + economyPerDay;
         }
     }
-    rentalAccount();
+
+    function calculateLuxuryCost(daysRented, distance) {
+        const luxuryPerDay = daysRented * LUXURY_PER_DAY;
+        if (distance > LUXURY_KM_DISCOUNT) {
+            return distance * LUXURY_MORE_THAN_200KM_PRICE + luxuryPerDay;
+        } else {
+            return distance * LUXURY_LESS_THAN_200KM_PRICE + luxuryPerDay;
+        }
+    }
+
+    let rentalCost;
+
+    if (carType === 'economy') {
+        rentalCost = calculateEconomyCost(daysRented, distance);
+    } else if (carType === 'luxury') {
+        rentalCost = calculateLuxuryCost(daysRented, distance);
+    }
+
+    console.log(`The price of renting an ${carType} car is $${rentalCost} dollars.`);
 }
 carRentalCostCalculation();
