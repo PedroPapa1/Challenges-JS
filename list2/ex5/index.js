@@ -16,19 +16,18 @@ export function rockPaperScissorsGame() {
     console.log(`You chose ${userChoice}.`);
     console.log(`The code chose ${randomCodeChoice}.`);
 
-   function result() {
-        const rockWins = userChoice === 'rock' && randomCodeChoice === 'scissor';
-        const paperWins = userChoice === 'paper' && randomCodeChoice === 'rock';
-        const scissorWins = userChoice === 'scissor' && randomCodeChoice === 'paper';
-
-        if (userChoice === randomCodeChoice) {
-            console.log(`Draw! Both chose ${userChoice}.`);
-        } else if ( rockWins || paperWins || scissorWins) {
-            console.log(`You won! ${userChoice} wins ${randomCodeChoice}.`);
-        } else {
-            console.log(`You lost! ${randomCodeChoice} wins ${randomCodeChoice}.`);
-        }
+    const winsFrom = {
+        rock: 'scissor',   
+        paper: 'rock',  
+        scissor: 'paper' 
+    };
+    
+    if (userChoice === randomCodeChoice) {
+        console.log(`Draw! Both chose ${userChoice}.`);
+    } else if (winsFrom[userChoice] === randomCodeChoice) {
+        console.log(`You won! ${userChoice} beats ${randomCodeChoice}.`);
+    } else {
+        console.log(`You lost! ${randomCodeChoice} beats ${userChoice}.`);
     }
-    result()
 }
 rockPaperScissorsGame();
