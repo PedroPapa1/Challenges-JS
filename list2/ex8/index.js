@@ -14,18 +14,21 @@ export function fitnessRewardsProgram () {
     console.log('How many hours of exercise did you do in a month? (Insert an INTEGER number)');
     const hoursOfExercise = parseInt(prompt('>'));
 
-    function hoursCalculation() {
-        if (hoursOfExercise < HOUR_CHECKOUT) {
-            const minminimalEarn = hoursOfExercise * POINTS_PER_HOUR_FOR_MORE_THAN_10_HOURS * POINT_PRICE;
-            console.log(`CONGRATS!! You earn $${minminimalEarn} dollars for your exercises.`);
-        } else if (hoursOfExercise > HOUR_CHECKOUT && hoursOfExercise < HOUR_PREMIUM_CHECKOUT) {
-            const mediumEarn = hoursOfExercise * POINTS_PER_HOUR_FOR_BETWEEN_10_AND_20_HOURS * POINT_PRICE
-            console.log(`CONGRATS!! You earn $${mediumEarn} dollars for your exercises.`);
+    function hoursCalculation(hours) {
+        let pointsEarned;
+
+        if (hours < HOUR_CHECKOUT) {
+            pointsEarned = hours * POINTS_PER_HOUR_FOR_MORE_THAN_10_HOURS;
+        } else if (hours >= HOUR_CHECKOUT && hours < HOUR_PREMIUM_CHECKOUT) {
+            pointsEarned = hours * POINTS_PER_HOUR_FOR_BETWEEN_10_AND_20_HOURS;
         } else {
-            const maxEarn = hoursOfExercise * POINTS_PER_HOUR_FOR_MORE_THAN_20_HOURS * POINT_PRICE;
-            console.log(`CONGRATS!! You earn $${maxEarn} dollars for your exercises.`);
+            pointsEarned = hours * POINTS_PER_HOUR_FOR_MORE_THAN_20_HOURS;
         }
+
+        return pointsEarned * POINT_PRICE;
     }
-    hoursCalculation();
+
+    const earn = hoursCalculation(hoursOfExercise);
+    console.log(`CONGRATS!! You earn $${earn} dollars for your exercises.`);
 }
 fitnessRewardsProgram();
