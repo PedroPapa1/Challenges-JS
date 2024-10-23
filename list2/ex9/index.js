@@ -6,11 +6,16 @@ export function salaryAndGenderReport() {
     let totalMenSalary = 0;
     let totalFemaleSalary = 0;
 
+    const gender = {
+        female: 'F',
+        male:'M',
+      }
+
     do {
         console.log('What is the gender of the employee? (Insert M to Male, and F to Female)');
         const genderPrompt = prompt('>').toUpperCase();
 
-        if (genderPrompt !== 'F' && genderPrompt !== 'M') {
+        if(!Object.values(gender).includes(genderPrompt)) {
             console.log('Insert M to Male, and F to Female. Try Again!');
             return;
         }
@@ -23,9 +28,9 @@ export function salaryAndGenderReport() {
             return;
         }
 
-        if (genderPrompt === 'M') {
+        if (genderPrompt === gender.male) {
             totalMenSalary += salaryPrompt;
-        } else if (genderPrompt === 'F') {
+        } else if (genderPrompt === gender.female) {
             totalFemaleSalary += salaryPrompt;
         }
         
