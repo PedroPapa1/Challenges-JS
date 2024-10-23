@@ -17,9 +17,7 @@ export function numberAnalysis() {
         sum += userNumbers;
         count++;
 
-        if (count === 1) {
-            smallestValue = userNumbers;
-        } else if (userNumbers < smallestValue) {
+        if (smallestValue === undefined || userNumbers < smallestValue) {
             smallestValue = userNumbers;
         }
 
