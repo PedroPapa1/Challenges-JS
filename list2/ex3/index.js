@@ -9,16 +9,12 @@ export function travelCostCalculation() {
     console.log('How many km will you travel? (use an INTEGER number)');
     const distance = parseInt(prompt('>'));
 
-    function calculation() {
+    if(distance > DISTANCE_TO_THE_DISCOUNT) {
         const moreThan200kmCalculation = distance * PRICE_WITH_DISCOUNT;
+        console.log(`Your trip will cost $${moreThan200kmCalculation} dollars.`);    
+    } else {
         const lessThan200kmCalculation = distance * PRICE_WITHOUT_DISCOUNT;
-
-        if(distance > DISTANCE_TO_THE_DISCOUNT) {
-             console.log(`Your trip will cost $${moreThan200kmCalculation} dollars.`);
-        } else {
-            console.log(`Your trip will cost $${lessThan200kmCalculation} dollars.`)
-        }
+        console.log(`Your trip will cost $${lessThan200kmCalculation} dollars.`)
     }
-    calculation();
 }
 travelCostCalculation();
