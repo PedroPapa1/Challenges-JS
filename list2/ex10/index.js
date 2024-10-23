@@ -11,7 +11,7 @@ let exitLoop;
 export function numberAnalysis() {
 
     do {
-        console.log('Inserte an INEGER number.')
+        console.log('Inserte an INTEGER number.')
         const userNumbers = parseInt(prompt('>'));
 
         sum += userNumbers;
