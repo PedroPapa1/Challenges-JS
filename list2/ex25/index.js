@@ -12,13 +12,11 @@ export function columnSumOfMatrix() {
 
   printMatrix(matrix);
 
-  for (let i = 0; i < columnCount; i++) {
-    columnCountArray[i] = 0;
-  }
-
   for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
     for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
-      columnCountArray[columnIndex] += matrix[rowIndex][columnIndex];
+      columnCountArray[columnIndex] = columnCountArray[columnIndex]
+        ? columnCountArray[columnIndex] + matrix[rowIndex][columnIndex]
+        : matrix[rowIndex][columnIndex];
     }
   }
 
