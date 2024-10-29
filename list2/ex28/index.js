@@ -1,8 +1,8 @@
 import { generateMatrix, printMatrix } from "../helper.js";
 
 export function SumOfElements() {
-  const rowCount = 4;
-  const columnCount = 4;
+  const rowCount = 10;
+  const columnCount = 10;
   let sumAbove = 0;
   let sumBelow = 0;
 
