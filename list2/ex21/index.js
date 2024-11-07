@@ -1,42 +1,38 @@
-import promptSync from 'prompt-sync';
+import promptSync from "prompt-sync";
 const prompt = promptSync();
 
 const WOMEN_WEIGHT_IDEAL_BASE = 62.1;
 const WOMEN_WEIGHT_FORMULA = 44.7;
 const MEN_WEIGHT_IDEAL_BASE = 72.7;
 const MEN_WEIGHT_FORMULA = 58;
+const GENDER_MALE = "M";
+const GENDER_FEMALE = "F";
 
+function idealWeightCalculation(height, gender) {
+  let idealWeight;
+
+  if (gender === GENDER_MALE) {
+    idealWeight = MEN_WEIGHT_IDEAL_BASE * height - MEN_WEIGHT_FORMULA;
+  } else if (gender === GENDER_FEMALE) {
+    idealWeight = WOMEN_WEIGHT_IDEAL_BASE * height - WOMEN_WEIGHT_FORMULA;
+  }
+
+  return idealWeight;
+}
 
 export function idealWeightFunction() {
-    const gender = {
-        male: 'M',
-        female: 'F'
-    }
+  console.log("What is the person gender? (Use M or F).");
+  const genderPrompt = prompt(">").toUpperCase();
 
-    console.log('What is the person gender? (Use M or F).');
-    const genderPrompt = prompt('>').toUpperCase();
+  if (![GENDER_MALE, GENDER_FEMALE].includes(genderPrompt)) {
+    console.log("Insert a valid gender.");
+    return;
+  }
 
-    if(!Object.values(gender).includes(genderPrompt)) {
-        console.log('Insert a valid gender.');
-        return;
-    }
+  console.log("What is the person height in meters ? (Use just float numbers).");
+  const heightPrompt = parseFloat(prompt(">"));
 
-    console.log('What is the person height in meters ? (Use just float numbers).');
-    const heightPrompt = parseFloat(prompt('>'));
-
-    function idealWeightCalculation(height) {
-        let idealWeight;
-
-        if (genderPrompt === gender.male) {
-            idealWeight = (MEN_WEIGHT_IDEAL_BASE * height) - MEN_WEIGHT_FORMULA;
-        } else if (genderPrompt === gender.female) {
-            idealWeight = (WOMEN_WEIGHT_IDEAL_BASE * height) - WOMEN_WEIGHT_FORMULA;
-        }
-
-        return idealWeight;
-    }
-
-    const finalWeight = idealWeightCalculation(heightPrompt);
-    console.log(`Your ideal weight is ${finalWeight.toFixed(2)}.`);
+  const finalWeight = idealWeightCalculation(heightPrompt, genderPrompt);
+  console.log(`Your ideal weight is ${finalWeight.toFixed(2)}.`);
 }
 idealWeightFunction();
