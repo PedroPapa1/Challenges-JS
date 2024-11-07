@@ -3,7 +3,7 @@ export function countingStringOccurrencesInAnArray() {
   const fruits = ["banana", "apple", "grape", "banana", "banana", "grape", "watermelon"];
 
   fruits.forEach((value) => {
-    count[value] = (count[value] || null) + 1;
+    count[value] = (count[value] || 0) + 1;
   });
   console.log(JSON.stringify(count));
 }
