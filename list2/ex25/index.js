@@ -3,7 +3,7 @@ import { generateMatrix, printMatrix } from "../helper.js";
 export function columnSumOfMatrix() {
   const rowCount = 15;
   const columnCount = 20;
-  const columnCountArray = [];
+  const columnCountArray = Array.from({ length: columnCount }, () => 0);
 
   const matrix = generateMatrix({
     rowCount,
@@ -14,9 +14,7 @@ export function columnSumOfMatrix() {
 
   for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
     for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
-      columnCountArray[columnIndex] = columnCountArray[columnIndex]
-        ? columnCountArray[columnIndex] + matrix[rowIndex][columnIndex]
-        : matrix[rowIndex][columnIndex];
+      columnCountArray[columnIndex] += matrix[rowIndex][columnIndex];
     }
   }
 
