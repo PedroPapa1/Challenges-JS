@@ -3,9 +3,9 @@ import promptSync from "prompt-sync";
 
 const prompt = promptSync();
 
-function comparingNumber({ matrix, columnCount, rowCount, comparativeNumber }) {
+function amountOfEqualNumbers({ matrix, columnCount, rowCount, comparativeNumber }) {
   let equalComaparativeNumber = 0;
-  const matrixFiltered = matrix;
+  const matrixFiltered = [...matrix];
 
   for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
     for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
@@ -33,16 +33,14 @@ export function elementCountAndMatrixFiltering() {
   console.log("Insert an INTEGER number.");
   const comparativeNumber = parseInt(prompt(">"));
 
-  const { equalComaparativeNumber, matrixFiltered } = comparingNumber({
+  const { equalComaparativeNumber, matrixFiltered } = amountOfEqualNumbers({
     matrix,
     columnCount,
     rowCount,
     comparativeNumber,
   });
 
-  console.log(
-    `There are ${equalComaparativeNumber} numbers equal to ${comparativeNumber} in the matrix.`
-  );
+  console.log(`There are ${equalComaparativeNumber} numbers equal to ${comparativeNumber} in the matrix.`);
   console.log(`The same matrix but without the number ${comparativeNumber}:`);
   printMatrix(matrixFiltered);
 }
