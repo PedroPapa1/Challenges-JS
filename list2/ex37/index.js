@@ -15,6 +15,7 @@ function examAnswers() {
 
 export function examScoreAnalysis() {
   const answerKey = examAnswers();
+  let correctQuestions = 0;
 
   for (let studentIndex = 0; studentIndex < STUDENT_NUMBERS; studentIndex++) {
     const studentAnswerKey = [];
@@ -24,8 +25,11 @@ export function examScoreAnalysis() {
       console.log(`Question number ${questionIndex + 1}.`);
       const studentAnswer = parseInt(prompt(">"));
       studentAnswerKey.push(studentAnswer);
+
+      if (studentAnswerKey[questionIndex] === answerKey[questionIndex]) {
+        correctQuestions++;
+      }
     }
-    const correctQuestions = answerKey.filter((value) => studentAnswerKey.includes(value));
 
     console.log(`That's the answer key: ${answerKey}`);
     console.log(`These're your rigth answers: ${correctQuestions}`);
