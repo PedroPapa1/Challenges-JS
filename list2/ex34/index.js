@@ -15,10 +15,9 @@ export function rowScalingByDiagonalElements() {
 
   for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
     const modifiedMatrixRow = [];
-    let rowMultiplier = matrix[rowIndex].find((_, index) => rowIndex === index);
 
     for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
-      modifiedMatrixRow.push(matrix[rowIndex][columnIndex] * rowMultiplier);
+      modifiedMatrixRow.push(matrix[rowIndex][columnIndex] * matrix[rowIndex][rowIndex]);
     }
 
     modifiedMatrix.push(modifiedMatrixRow);
