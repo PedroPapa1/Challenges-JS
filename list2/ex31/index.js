@@ -5,7 +5,7 @@ const prompt = promptSync();
 
 function amountOfEqualNumbers({ matrix, columnCount, rowCount, comparativeNumber }) {
   let equalComaparativeNumber = 0;
-  const matrixFiltered = [...matrix];
+  const matrixFiltered = matrix.map((row) => [...row]);
 
   for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
     for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
