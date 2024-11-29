@@ -13,11 +13,16 @@ export function matrixRowNormalization() {
   console.log("---------------");
 
   function newMatrix({ matrix, rowCount, columnCount }) {
-    const modifiedMatrix = JSON.parse(JSON.stringify(matrix));
+    const modifiedMatrix = matrix.map((row) => [...row]);
 
     for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
       const biggestValue = Math.max(...modifiedMatrix[rowIndex]);
-      console.log(`The biggest ${rowIndex + 1} row number: ${biggestValue}`);
+
+      if (biggestValue === 0) {
+        console.log(`Row ${rowIndex + 1} contains only zeros.`);
+      } else {
+        console.log(`The largest absolute value in row ${rowIndex + 1}: ${biggestValue}`);
+      }
 
       for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
         modifiedMatrix[rowIndex][columnIndex] = Math.round((matrix[rowIndex][columnIndex] / biggestValue) * 100) / 100;
