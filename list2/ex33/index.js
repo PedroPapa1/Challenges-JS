@@ -1,12 +1,12 @@
 import { generateMatrix, printMatrix } from "../helper.js";
 
 function secondaryDiagonal({ matrix, rowCount }) {
-  let diagonalMean = 0;
+  let diagonalSum = matrix.reduce((sum, row, index) => {
+    return sum + row[rowCount - 1 - index];
+  }, 0);
+  diagonalSum /= rowCount;
 
-  for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
-    diagonalMean += matrix[rowIndex][rowCount - 1 - rowIndex];
-  }
-  return diagonalMean / rowCount;
+  return diagonalSum.toFixed(2);
 }
 
 export function diagonalMultiplicationBySecondaryMean() {
@@ -38,9 +38,7 @@ export function diagonalMultiplicationBySecondaryMean() {
   }
 
   console.log(`The secondary diagonal mean: ${secondaryDiagonalMean}`);
-  console.log(
-    "The multiplication of each number on the main diagonal by secondary diagonal mean:"
-  );
+  console.log("The multiplication of each number on the main diagonal by secondary diagonal mean:");
   console.log(JSON.stringify(numbersMultipliedBySecondaryMean));
 }
 diagonalMultiplicationBySecondaryMean();
