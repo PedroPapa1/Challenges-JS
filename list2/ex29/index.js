@@ -1,44 +1,41 @@
 import { generateMatrix, printMatrix } from "../helper.js";
 
-const sumOf = {
-  fourthRow: 0,
-  secondColumn: 0,
-  mainDiagonal: 0,
-  allElements: 0,
-};
-
 function sumOfRow({ matrix, columnCount, rowIndex }) {
+  let sum = 0;
   for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
-    sumOf.fourthRow += matrix[rowIndex][columnIndex];
+    sum += matrix[rowIndex][columnIndex];
   }
-  return sumOf.fourthRow;
+  return sum;
 }
 
 function sumOfColumn({ matrix, rowCount, columnIndex }) {
+  let sum = 0;
   for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
-    sumOf.secondColumn += matrix[rowIndex][columnIndex];
+    sum += matrix[rowIndex][columnIndex];
   }
-  return sumOf.secondColumn;
+  return sum;
 }
 
 function sumOfDiagonal({ matrix, rowCount, columnCount }) {
+  let sum = 0;
   for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
     for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
       if (columnIndex === rowIndex) {
-        sumOf.mainDiagonal += matrix[rowIndex][columnIndex];
+        sum += matrix[rowIndex][columnIndex];
       }
     }
   }
-  return sumOf.mainDiagonal;
+  return sum;
 }
 
 function sumOfAllMatrix({ matrix, rowCount, columnCount }) {
+  let sum = 0;
   for (let columnIndex = 0; columnIndex < columnCount; columnIndex++) {
     for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
-      sumOf.allElements += matrix[rowIndex][columnIndex];
+      sum += matrix[rowIndex][columnIndex];
     }
   }
-  return sumOf.allElements;
+  return sum;
 }
 
 export function matrixRowAndColumnSums() {
