@@ -9,12 +9,7 @@ export function compactArray() {
     completeArray.push(generateRandomInteger());
   }
 
-  const compactArray = [...completeArray];
-  compactArray.sort((a, b) => b - a);
-
-  while (compactArray.find((value) => value <= 0)) {
-    compactArray.pop();
-  }
+  const compactArray = completeArray.filter((value) => value !== null && value > 0);
 
   console.log("Complete array with 100 numbers:");
   console.log(JSON.stringify(completeArray));
