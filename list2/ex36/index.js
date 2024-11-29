@@ -6,8 +6,13 @@ const BETTING_PLAYERS = 100;
 
 function luckyLotteryNumbers() {
   const luckyNumbers = [];
-  for (let i = 0; i < MAX_NUMBERS; i++) {
-    luckyNumbers.push(Math.floor(Math.random() * 100) + 1);
+
+  while (luckyNumbers.length < MAX_NUMBERS) {
+    const number = Math.floor(Math.random() * 100) + 1;
+
+    if (!luckyNumbers.includes(number)) {
+      luckyNumbers.push(number);
+    }
   }
   return luckyNumbers;
 }
