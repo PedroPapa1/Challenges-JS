@@ -6,14 +6,8 @@ export function countingStringPropertiesInAnObject() {
     email: "pedro.papa@cloudbeds.com",
   };
 
-  let count = 0;
-  const stringCount = Object.entries(data);
-  stringCount.forEach(([_, value]) => {
-    let itIsString = typeof value === "string";
-    if (itIsString) {
-      count++;
-    }
-  });
-  console.log(JSON.stringify(count));
+  const stringCount = Object.values(data).filter((value) => typeof value === "string").length;
+
+  console.log(`Has ${stringCount} strings in the object.`);
 }
 countingStringPropertiesInAnObject();
