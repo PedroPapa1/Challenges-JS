@@ -11,7 +11,7 @@ export function combiningObjects() {
     salary: 2000,
   };
 
-  const combinedObjects = Object.assign({}, obj1, obj2);
+  const combinedObjects = { ...obj1, ...obj2 };
   console.log(JSON.stringify(combinedObjects));
 }
 combiningObjects();
