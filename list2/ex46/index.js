@@ -25,11 +25,12 @@ export function salesSummaryByVendor() {
       value: 100,
     },
   ];
-  const totalSales = {};
 
-  sales.forEach(({ vendor, value }) => {
-    totalSales[vendor] = totalSales[vendor] ? totalSales[vendor] + value : value;
-  });
-  console.log(JSON.stringify(totalSales));
+  const result = sales.reduce((totalSales, { vendor, value }) => {
+    totalSales[vendor] = (totalSales[vendor] || 0) + value;
+    return totalSales;
+  }, {});
+
+  console.log(result);
 }
 salesSummaryByVendor();
