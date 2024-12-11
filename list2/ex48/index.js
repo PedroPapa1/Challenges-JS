@@ -9,12 +9,14 @@ export function combiningStoreInventories() {
     watermelon: 5,
     grape: 6,
   };
-  const combineInventory = { ...inventoryA };
 
-  const combiningInventories = Object.entries(inventoryB);
-  combiningInventories.forEach(([key, value]) => {
-    combineInventory[key] = combineInventory[key] ? combineInventory[key] + value : value;
-  });
-  console.log(JSON.stringify(combineInventory));
+  const combinedInventory = Object.entries(inventoryB).reduce(
+    (acc, [key, value]) => {
+      acc[key] = acc[key] ? acc[key] + value : value;
+      return acc;
+    },
+    { ...inventoryA }
+  );
+  console.log(combinedInventory);
 }
 combiningStoreInventories();
