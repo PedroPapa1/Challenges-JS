@@ -1,16 +1,21 @@
-export function transformingObjectProperties() {
+function callBackExample(value) {
+  return value * 2;
+}
+
+export function transformingObjectProperties(callBack) {
   const data = {
     a: 1,
     b: 2,
     c: 3,
   };
 
-  const data2 = {};
-
-  const multiplier = Object.entries(data);
-  multiplier.forEach(([key, value]) => {
-    data2[key] = value * 2;
-  });
-  console.log(JSON.stringify(data2));
+  const transformedData = Object.entries(data).reduce(
+    (acc, [key, value]) => {
+      acc[key] = callBack(value);
+      return acc;
+    },
+    { ...data }
+  );
+  console.log(JSON.stringify(transformedData));
 }
-transformingObjectProperties();
+transformingObjectProperties(callBackExample);
